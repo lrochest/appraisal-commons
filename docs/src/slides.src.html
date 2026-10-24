@@ -33,6 +33,11 @@
   .quote { font-family: "Iowan Old Style", Georgia, serif; color: #1f5f4a; font-size: 1.05em !important; line-height: 1.3; }
   .chart, .diagram { width: 100%; height: auto; background: #fff; border-radius: 10px; }
   .reveal .diagram { max-height: 470px; }
+  .reveal h2.demo-h { font-size: 1.12em; }
+  .reveal h1.title-h { font-size: 1.72em; }
+  .row.safety { grid-template-columns: auto 1fr; gap: 28px; }
+  .row.safety img { max-width: 430px; }
+  .row.safety ul { margin-left: .2em; }
   code { font-size: .85em; background: #eef2f0; padding: 1px 6px; border-radius: 5px; }
 </style>
 </head>
@@ -41,8 +46,8 @@
 
 <section>
   <div class="eyebrow">MGT 409 · Final Project · Kesha Rochester</div>
-  <h1>Appraisal Commons: see what homes <em>actually</em> appraised for before you offer</h1>
-  <p>Real appraisal records for all 169 Connecticut towns. No estimates. Four <code>gpt-6-luna</code> agents behind code-level guards.</p>
+  <h1 class="title-h">Appraisal Commons: see what other homes <em>actually</em> appraised for before you offer</h1>
+  <p>Real appraisal records for all 169 Connecticut towns. No estimates. Agents behind code-level guards.</p>
   <p class="muted">github.com/lrochest/appraisal-commons</p>
 </section>
 
@@ -55,7 +60,7 @@
         <li>Low supply → buyers <b>offer over asking</b> to win.</li>
         <li>Appraises that high → the higher price can be <b>financed</b> (with loan approval).</li>
         <li>Appraises lower → the buyer brings the difference as <b>additional cash to close</b>.</li>
-        <li>The appraisal arrives <b>after</b> the contract, and only the buyer and lender see it.</li>
+        <li>The appraisal arrives <b>after</b> the contract and goes to the lender. The seller may never see it, and its values are <b>never shared publicly</b>.</li>
       </ul>
       <p class="muted">CT purchases priced above the appraisal: 4.0% in 2019 → 10.3% in 2021 → 9.9% in 2023 (FHFA UAD).</p>
     </div>
@@ -69,7 +74,7 @@
   <table class="t">
     <thead><tr><th>Product</th><th>Gives a buyer</th><th>Missing</th></tr></thead>
     <tbody>
-      <tr><td><b>Zillow</b> · <b>Redfin</b> · <b>Realtor.com</b></td><td>Listings, sold prices, a model's estimate</td><td>Any actual appraisal</td></tr>
+      <tr><td><b>Zillow</b> · <b>Redfin</b> · <b>Realtor.com</b></td><td>Listings, sold prices, a model's estimate</td><td>Appraisal values</td></tr>
       <tr><td>Gap calculators (EstatePass)</td><td>Math on a gap you type in</td><td>The data</td></tr>
       <tr><td>FHFA UAD / HMDA browsers</td><td>The real data</td><td>Address search, plain language, the offer</td></tr>
       <tr><td><b>Appraisal Commons</b></td><td class="good">Neighborhood appraisals, lender-used values on 2024 mortgages, sale history, owner-shared list → appraisal → close</td><td class="good">"How often have homes here appraised as far over asking as my offer?"</td></tr>
@@ -121,7 +126,7 @@
   <div class="eyebrow">Demo · one real run, traced</div>
   <div class="row r37">
     <div>
-      <h2>5 Pope St, New Haven: $475,000 on $449,000 asking</h2>
+      <h2 class="demo-h">5 Pope St, New Haven: $475,000 on $449,000 asking</h2>
       <ul>
         <li>Records first: tiles in <b>0.1 s</b> straight from the data; AI writes the summary after (was 8–80 s for everything)</li>
         <li>Concierge → <code>compare_offer</code> → short cited answer</li>
@@ -162,7 +167,7 @@
 
 <section>
   <div class="eyebrow">Safety · 9 of 9 live attacks defended</div>
-  <div class="row">
+  <div class="row safety">
     <img class="shot" src="{{img:12_tampered_rejected}}" alt="Tampered PDF rejected" style="max-height:470px" />
     <div>
       <ul>

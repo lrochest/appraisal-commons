@@ -22,7 +22,7 @@ Requires **Python 3.10+**. The app uses the course key `PORTKEY_API_KEY` with th
 1. **Clone** the repo and go into it.
 
    ```bash
-   git clone <this-repo-url> appraisal-commons
+   git clone https://github.com/lrochest/appraisal-commons.git
    cd appraisal-commons
    ```
 

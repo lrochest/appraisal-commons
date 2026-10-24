@@ -290,3 +290,14 @@ def test_under_asking_fact_and_over_asking_ref():
     o = out["how_often"]["over_asking"]
     ids = {int(i) for i in o["ref"].split(":")[1].split(",")}
     assert len(ids) == o["with_appraisal_and_list"]  # ref cites only records the count used
+
+
+def test_missing_key_gives_clear_message(monkeypatch):
+    from fastapi.testclient import TestClient
+    from app import main
+    monkeypatch.setattr(config, "api_key", lambda: None)
+    c = TestClient(main.app)
+    c.get("/")  # issues the session cookie
+    r = c.post("/api/offer-check", json={"address": "5 POPE ST", "town": "New Haven", "offer": 475000, "asking": 449000})
+    assert r.status_code == 503 and "PORTKEY_API_KEY" in r.json()["error"]
+    assert c.post("/api/how-often", json={"address": "5 POPE ST", "town": "New Haven", "offer": 475000}).status_code == 200

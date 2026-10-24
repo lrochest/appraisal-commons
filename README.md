@@ -110,7 +110,7 @@ Code-level guards around them: privacy redactor (before any model call and in th
 
 ```bash
 pip install -r requirements-dev.txt
-python -m pytest -q                 # 30 offline safety tests, no key needed
+python -m pytest -q                 # 31 offline safety tests, no key needed
 python scripts/attack_tests.py      # live red-team run, writes output/attack_results.json (< $0.01)
 ```
 

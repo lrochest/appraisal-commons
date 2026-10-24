@@ -50,6 +50,7 @@ FRIENDLY = {
     "model_error": "The AI service didn't respond. The records on this page are still accurate; try the question again in a minute.",
     "error": "Something went wrong on our side. The records on this page are still accurate.",
     "paused": "AI features are paused by the site operator. The records on this page still work.",
+    "no_key": "AI features are off because PORTKEY_API_KEY wasn't found. Put it in a .env file in the app folder or one folder up, then restart. The records on this page still work.",
 }
 
 
@@ -112,14 +113,23 @@ def _meter(request: Request, kind: str) -> Meter:
     return Meter(run_id=uuid.uuid4().hex[:10], kind=kind, session_spent_before=_session_spend.get(sid, 0.0))
 
 
+class _NoKey(Exception):
+    pass
+
+
 def _run(request: Request, meter: Meter, asked: dict, fn):
     """Run an agent pipeline; always settle spend and write the audit trail."""
     started = time.time()
     sid = _session(request)
     out, stop, status, error = None, "error", 200, None
     try:
+        if not config.api_key():
+            stop, status = "no_key", 503
+            raise _NoKey
         out = fn()
         stop = _stop_reason(out)
+    except _NoKey:
+        pass
     except BudgetExceeded as exc:
         stop, status, error = "budget", 402, str(exc)
     except AgentLoopLimit:

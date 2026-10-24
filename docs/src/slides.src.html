@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Appraisal Commons · Slides</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/white.css" />
+<style>
+  :root { --r-main-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, sans-serif; --r-heading-font: "Iowan Old Style", "Palatino Linotype", Georgia, serif; --r-main-color: #1d2a26; --r-heading-color: #1d2a26; --r-link-color: #1f5f4a; --r-main-font-size: 30px; --r-heading-text-transform: none; --r-heading-letter-spacing: -.01em; }
+  .reveal { background: #fbfaf7; }
+  .reveal .slides { text-align: left; }
+  .reveal h1 { font-size: 2.1em; line-height: 1.1; } .reveal h2 { font-size: 1.45em; margin-bottom: .45em; } .reveal h1 em, .reveal h2 em { color: #1f5f4a; }
+  .eyebrow { font-size: .5em; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: #2f8a6b; margin-bottom: .4em; }
+  .reveal p, .reveal li { font-size: .78em; line-height: 1.45; }
+  .reveal ul { margin-left: 1em; }
+  .muted { color: #5d6b66; font-size: .62em !important; }
+  .reveal img { border: 1px solid #dfe6e2; border-radius: 10px; background: #fff; margin: 0; }
+  .shot { max-height: 520px; max-width: 100%; display: block; margin: 0 auto; }
+  .row { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; align-items: center; }
+  .row.r37 { grid-template-columns: 1fr 1.25fr; }
+  .big { font-family: "Iowan Old Style", Georgia, serif; font-size: 2.6em; color: #1f5f4a; line-height: 1; }
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 18px; }
+  .stat { background: #fff; border: 1px solid #dfe6e2; border-radius: 14px; padding: 14px; }
+  .stat b { display: block; font-family: "Iowan Old Style", Georgia, serif; font-size: 1.35em; color: #1f5f4a; }
+  .stat span { display: block; font-size: .46em; color: #5d6b66; line-height: 1.3; margin-top: 4px; }
+  table.t { font-size: .6em; width: 100%; border-collapse: collapse; background: #fff; }
+  table.t th { text-align: left; color: #5d6b66; font-size: .85em; text-transform: uppercase; letter-spacing: .04em; border-bottom: 1px solid #dfe6e2; padding: 6px 8px; }
+  table.t td { border-bottom: 1px solid #eef2f0; padding: 6px 8px; }
+  table.t td.n { text-align: right; font-variant-numeric: tabular-nums; }
+  .good { color: #1f5f4a; font-weight: 700; } .badt { color: #a8372a; font-weight: 700; }
+  .callout { background: #eef5f1; border-left: 5px solid #1f5f4a; padding: 12px 18px; border-radius: 0 12px 12px 0; font-size: .7em; margin-top: 16px; }
+  .quote { font-family: "Iowan Old Style", Georgia, serif; color: #1f5f4a; font-size: 1.05em !important; line-height: 1.3; }
+  .chart, .diagram { width: 100%; height: auto; background: #fff; border-radius: 10px; }
+  .reveal .diagram { max-height: 470px; }
+  code { font-size: .85em; background: #eef2f0; padding: 1px 6px; border-radius: 5px; }
+</style>
+</head>
+<body>
+<div class="reveal"><div class="slides">
+
+<section>
+  <div class="eyebrow">MGT 409 · Final Project · Kesha Rochester</div>
+  <h1>Appraisal Commons: see what homes <em>actually</em> appraised for before you offer</h1>
+  <p>Real appraisal records for all 169 Connecticut towns. No estimates. Four <code>gpt-6-luna</code> agents behind code-level guards.</p>
+  <p class="muted">github.com/lrochest/appraisal-commons</p>
+</section>
+
+<section>
+  <div class="eyebrow">The problem</div>
+  <h2>Buyers bid over asking. The appraisal decides who pays for it.</h2>
+  <div class="row r37">
+    <div>
+      <ul>
+        <li>The lender lends only on the <b>appraised value</b>.</li>
+        <li>If it appraises below the price, the buyer is expected to <b>bring the difference in cash</b>.</li>
+        <li>The appraisal comes <b>after</b> the contract. Buyers decide how far over asking to go blind.</li>
+      </ul>
+      <p class="muted">CT purchases priced above the appraisal: 4.0% in 2019 → 10.3% in 2021 → 9.9% in 2023 (FHFA UAD).</p>
+    </div>
+    <div>{{chart:trend}}</div>
+  </div>
+</section>
+
+<section>
+  <div class="eyebrow">What is new</div>
+  <h2>Other sites show estimates. None show what homes appraised for.</h2>
+  <table class="t">
+    <thead><tr><th>Product</th><th>Gives a buyer</th><th>Missing</th></tr></thead>
+    <tbody>
+      <tr><td><b>Zillow</b> · <b>Redfin</b> · <b>Realtor.com</b></td><td>Listings, sold prices, a model's estimate</td><td>Any actual appraisal</td></tr>
+      <tr><td>Gap calculators (EstatePass)</td><td>Math on a gap you type in</td><td>The data</td></tr>
+      <tr><td>FHFA UAD / HMDA browsers</td><td>The real data</td><td>Address search, plain language, the offer</td></tr>
+      <tr><td><b>Appraisal Commons</b></td><td class="good">Neighborhood appraisals, lender-used values on 2024 mortgages, sale history, owner-shared list → appraisal → close</td><td class="good">"How often have homes here appraised as far over asking as my offer?"</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <div class="eyebrow">The agents</div>
+  <h2>Four narrow agents. Code does the guarding.</h2>
+  <svg class="diagram" viewBox="0 0 820 430" role="img" aria-label="Agent architecture diagram">
+  <defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#5d6b66"/></marker></defs>
+  <style>.b{fill:#fff;stroke:#c9d6d0;stroke-width:1.5}.g{fill:#eef5f1;stroke:#2f8a6b;stroke-width:1.5}.w{fill:#fbefe5;stroke:#c8702a;stroke-width:1.5}.h{fill:#1f5f4a}.t{font:600 13px -apple-system,sans-serif;fill:#1d2a26}.s{font:11.5px -apple-system,sans-serif;fill:#5d6b66}.ht{font:700 13px -apple-system,sans-serif;fill:#fff}.l{stroke:#5d6b66;stroke-width:1.4;fill:none;marker-end:url(#ar)}</style>
+  <rect class="b" x="10" y="20" width="150" height="56" rx="10"/><text class="t" x="24" y="44">Visitor</text><text class="s" x="24" y="62">offer, question, or file</text>
+  <rect class="w" x="200" y="12" width="190" height="112" rx="10"/><text class="t" x="214" y="34">Code guards (in)</text>
+  <text class="s" x="214" y="53">privacy redactor · injection scan</text><text class="s" x="214" y="70">input guard · rate limits</text><text class="s" x="214" y="87">budget: $0.25 session, $2 day</text><text class="s" x="214" y="104">kill switch (AI_PAUSED)</text>
+  <path class="l" d="M160,48 H198"/>
+  <rect class="g" x="430" y="12" width="180" height="58" rx="10"/><text class="t" x="444" y="36">Records Concierge</text><text class="s" x="444" y="55">checks an offer (Offer Check)</text>
+  <rect class="g" x="430" y="80" width="180" height="58" rx="10"/><text class="t" x="444" y="104">Records Guide</text><text class="s" x="444" y="123">chat in the corner</text>
+  <rect class="g" x="430" y="148" width="180" height="58" rx="10"/><text class="t" x="444" y="172">Extractor</text><text class="s" x="444" y="191">document → fixed JSON form</text>
+  <rect class="g" x="430" y="216" width="180" height="58" rx="10"/><text class="t" x="444" y="240">Verifier</text><text class="s" x="444" y="259">6 check tools → verdict</text>
+  <path class="l" d="M390,40 H428"/><path class="l" d="M390,60 C412,75 410,100 428,108"/><path class="l" d="M390,80 C414,110 408,165 428,176"/>
+  <path class="l" d="M520,206 V214"/>
+  <rect class="b" x="650" y="12" width="160" height="206" rx="10"/><text class="t" x="664" y="36">Record tools</text>
+  <text class="s" x="664" y="56">compare_offer</text><text class="s" x="664" y="73">find_property</text><text class="s" x="664" y="90">appraisal_stats</text><text class="s" x="664" y="107">lender_values</text><text class="s" x="664" y="124">shared_appraisals</text><text class="s" x="664" y="141">search_places</text><text class="s" x="664" y="158">area_summary</text><text class="s" x="664" y="175">appraisal_gap_trend</text><text class="s" x="664" y="192">shared_records</text>
+  <path class="l" d="M610,41 H648"/><path class="l" d="M610,109 H648"/>
+  <rect class="b" x="650" y="234" width="160" height="92" rx="10"/><text class="t" x="664" y="257">SQLite (bundled)</text><text class="s" x="664" y="275">CT sales 232,875</text><text class="s" x="664" y="292">HMDA 2024 27,044</text><text class="s" x="664" y="309">FHFA UAD 91,672 rows</text>
+  <path class="l" d="M730,218 V232"/>
+  <rect class="w" x="200" y="300" width="190" height="78" rx="10"/><text class="t" x="214" y="322">Code guards (out)</text><text class="s" x="214" y="341">grounding guard: every $ and %</text><text class="s" x="214" y="357">must appear in a tool output</text>
+  <path class="l" d="M430,60 C330,120 300,220 300,298"/><path class="l" d="M430,130 C350,170 320,240 318,298"/>
+  <rect class="b" x="10" y="310" width="150" height="56" rx="10"/><text class="t" x="24" y="334">Answer + trace</text><text class="s" x="24" y="352">with source refs</text>
+  <path class="l" d="M200,339 H162"/>
+  <rect class="h" x="430" y="330" width="180" height="70" rx="10"/><text class="ht" x="444" y="354">Review desk (a person)</text><text style="font:11.5px -apple-system,sans-serif;fill:#d6eadf" x="444" y="373">only a named human closes</text><text style="font:11.5px -apple-system,sans-serif;fill:#d6eadf" x="444" y="389">a ticket; agents can't</text>
+  <path class="l" d="M520,274 V328"/>
+  <text class="s" x="536" y="300">"needs a second look"</text>
+  <rect class="b" x="650" y="340" width="160" height="56" rx="10"/><text class="t" x="664" y="363">Meter + audit trail</text><text class="s" x="664" y="381">tokens, cost, every step</text>
+</svg>
+  <p class="muted">Concierge (Offer Check) · Records Guide (chat) · Extractor (document → JSON schema) · Verifier (6 check tools). gpt-6-luna: course key, tool calling + strict JSON, cheap; low reasoning for the answering agents.</p>
+</section>
+
+<section>
+  <div class="eyebrow">Demo · one real run, traced</div>
+  <div class="row r37">
+    <div>
+      <h2>5 Pope St, New Haven: $475,000 on $449,000 asking</h2>
+      <ul>
+        <li>Record tiles in <b>0.1 s</b> (no AI)</li>
+        <li>Concierge → <code>compare_offer</code> → short cited answer</li>
+        <li>Grounding guard: every $ and % traced</li>
+        <li><b>2 calls · 5,063 in (3,786 cached) · 318 out · $0.00032</b></li>
+      </ul>
+    </div>
+    <img class="shot" src="{{img:08b_offer_full}}" alt="Offer Check traced run" />
+  </div>
+</section>
+
+<section>
+  <div class="eyebrow">Demo · the site</div>
+  <div class="row">
+    <img class="shot" src="{{img:06_home_record}}" alt="Shared record" style="max-height:300px" />
+    <img class="shot" src="{{img:05_neighborhoods}}" alt="Neighborhoods" style="max-height:300px" />
+    <img class="shot" src="{{img:04_explore_search}}" alt="Explore search" style="max-height:280px" />
+    <img class="shot" src="{{img:16_phone_home_page}}" alt="Phone view" style="max-height:280px" />
+  </div>
+  <p class="muted">Appraisal vs. asking on shared records · neighborhoods with the sales behind each count · address search by county · phone layout.</p>
+</section>
+
+<section>
+  <div class="eyebrow">Tokenomics · measured A/B, 5 Offer Checks per setup</div>
+  <div class="row r37">
+    <div>{{chart:cost}}</div>
+    <table class="t">
+      <thead><tr><th>Setup</th><th>Cost</th><th>Out tok.</th><th>Time</th><th>Complete</th></tr></thead>
+      <tbody>
+        <tr><td>Before</td><td class="n">$0.000751</td><td class="n">1,127</td><td class="n">10.1 s</td><td class="n badt">3/5</td></tr>
+        <tr><td>Low reasoning</td><td class="n">$0.000463</td><td class="n">552</td><td class="n">5.3 s</td><td class="n">5/5</td></tr>
+        <tr><td><b>Shipped</b> (+ short answer)</td><td class="n good">$0.000323</td><td class="n good">337</td><td class="n good">5.5 s</td><td class="n good">5/5</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="callout"><b>−57% cost, quality up.</b> Per active user ≈ <b>$0.0046/month</b> → <b>$0.46</b> at 100 users, <b>$45.81</b> at 10,000. Caching: 75% of input tokens cached.</div>
+</section>
+
+<section>
+  <div class="eyebrow">Safety · 9 of 9 live attacks defended</div>
+  <div class="row">
+    <img class="shot" src="{{img:12_tampered_rejected}}" alt="Tampered PDF rejected" style="max-height:470px" />
+    <div>
+      <ul>
+        <li><b>Injection:</b> tamper scan + code backstop; input guard on chat</li>
+        <li><b>Invented facts:</b> grounding guard; a mislabeled "$13,000" caught in the user test → fixed + test</li>
+        <li><b>Loops / cut-offs:</b> tool-round cap, forced final answer, cut-off detection</li>
+        <li><b>Overspending:</b> 1,200-token cap, $0.25/session, $2/day, rate limits, kill switch</li>
+        <li><b>People decide:</b> only a named human closes a review ticket</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="eyebrow">Impact · a real user</div>
+  <div class="row r37">
+    <div>
+      <p class="quote">"Less wordy - more visuals."</p>
+      <p>Brilow, a prospective buyer, finished the task in <b>3:17</b>. She'd now offer <b>~4% over asking instead of 5.8%</b>, since few homes nearby appraised that high (shared records were SAMPLE demos).</p>
+      <p>After her feedback: tiles in <b>0.1 s</b> (was up to 80 s), answers <b>under 70 words</b>, a Google Maps button.</p>
+    </div>
+    <img class="shot" src="{{img:22_user_stopwatch_feedback}}" alt="Stopwatch and feedback" style="max-height:470px" />
+  </div>
+  <div class="stats">
+    <div class="stat"><b>9.9%</b><span>CT purchases priced above appraisal, 2023</span></div>
+    <div class="stat"><b>25,049</b><span>single-family sales, latest 12 months</span></div>
+    <div class="stat"><b>27,044</b><span>2024 mortgages by tract (HMDA)</span></div>
+    <div class="stat"><b>417,715</b><span>appraisals behind the stats (FHFA)</span></div>
+  </div>
+</section>
+
+<section>
+  <div class="eyebrow">What's next</div>
+  <h2>Fill the registry, then grow beyond Connecticut</h2>
+  <ul>
+    <li><b>Real shared records</b> through housing counselors, CHFA programs, and buyer's agents at closing</li>
+    <li><b>MCP server</b> so any AI client can answer from the same grounded records</li>
+    <li><b>More states</b> (FHFA and HMDA are national; the sale check needs state data)</li>
+    <li><b>Label-aware grounding</b>: check that each number keeps its meaning, not just its value</li>
+  </ul>
+  <p class="muted">Limits: registry starts empty (SAMPLE demos only) · FHFA is yearly and hides small tracts · HMDA in $10k bands · one user test so far.</p>
+</section>
+
+</div></div>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+<script>Reveal.initialize({ hash: true, width: 1280, height: 760, margin: 0.05, transition: "fade" });</script>
+</body>
+</html>

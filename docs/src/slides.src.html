@@ -38,6 +38,11 @@
   .row.safety { grid-template-columns: auto 1fr; gap: 28px; }
   .row.safety img { max-width: 430px; }
   .row.safety ul { margin-left: .2em; }
+  .site-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 16px; align-items: start; }
+  .site-grid img { width: 100%; height: auto; display: block; }
+  .site-grid img.nb { max-height: 540px; object-fit: contain; object-position: top; }
+  .site-right { display: grid; gap: 14px; }
+  .site-pair { display: grid; grid-template-columns: 1fr 105px; gap: 14px; align-items: start; }
   code { font-size: .85em; background: #eef2f0; padding: 1px 6px; border-radius: 5px; }
 </style>
 </head>
@@ -70,14 +75,14 @@
 
 <section>
   <div class="eyebrow">What is new: more than asking and sale prices</div>
-  <h2>Buyers see asking and sale prices. None show what homes appraised for.</h2>
+  <h2>Buyers see asking and sale prices.<br/>None show what homes appraised for.</h2>
   <table class="t">
     <thead><tr><th>Product</th><th>Gives a buyer</th><th>Missing</th></tr></thead>
     <tbody>
       <tr><td><b>Zillow</b> · <b>Redfin</b> · <b>Realtor.com</b></td><td>Listings, sold prices, a model's estimate</td><td>Appraisal values</td></tr>
       <tr><td>Gap calculators (EstatePass)</td><td>Math on a gap you type in</td><td>The data</td></tr>
       <tr><td>FHFA UAD / HMDA browsers</td><td>The real data</td><td>Address search, plain language, the offer</td></tr>
-      <tr><td><b>Appraisal Commons</b></td><td class="good">Neighborhood appraisals, lender-used values on 2024 mortgages, sale history, owner-shared list → appraisal → close</td><td class="good">"How often have homes here appraised as far over asking as my offer?"</td></tr>
+      <tr><td><b>Appraisal Commons</b></td><td class="good">Neighborhood appraisals, lender-used values on 2024 mortgages, sale history, owner-shared asking → appraisal → close</td><td class="good">"How often have homes here appraised as far over asking as my offer?"</td></tr>
     </tbody>
   </table>
 </section>
@@ -119,7 +124,7 @@
   <rect class="h" x="378" y="434" width="22" height="18" rx="5"/><text class="s" x="406" y="447">A person</text>
   <rect class="b" x="478" y="434" width="22" height="18" rx="5"/><text class="s" x="506" y="447">Visitor, tools, data, logs (no AI)</text>
 </svg>
-  <p class="muted">Concierge (Offer Check) · Records Guide (chat) · Extractor (document → JSON schema) · Verifier (6 check tools). gpt-6-luna: course key, tool calling + strict JSON, cheap; low reasoning for the answering agents.</p>
+  <p class="muted">Concierge (Offer Check) · Records Guide (chat) · Extractor (document → JSON schema) · Verifier (6 check tools).<br/>gpt-6-luna: course key, tool calling + strict JSON, cheap; low reasoning for the answering agents.</p>
 </section>
 
 <section>
@@ -140,13 +145,17 @@
 
 <section>
   <div class="eyebrow">Demo · the site</div>
-  <div class="row">
-    <img class="shot" src="{{img:06_home_record}}" alt="Shared record" style="max-height:300px" />
-    <img class="shot" src="{{img:05_neighborhoods}}" alt="Neighborhoods" style="max-height:300px" />
-    <img class="shot" src="{{img:18_share_steps_done}}" alt="Sharing steps" style="max-height:280px" />
-    <img class="shot" src="{{img:16_phone_home_page}}" alt="Phone view" style="max-height:280px" />
+  <div class="site-grid">
+    <img class="nb" src="{{img:05_neighborhoods}}" alt="Neighborhoods with the sales behind each count" />
+    <div class="site-right">
+      <img src="{{img:06_home_record}}" alt="Shared record for 5 Pope St" />
+      <div class="site-pair">
+        <img src="{{img:18_share_steps_done}}" alt="Sharing steps" />
+        <img src="{{img:16_phone_home_page}}" alt="Phone view" />
+      </div>
+    </div>
   </div>
-  <p class="muted">Appraisal vs. asking on shared records · neighborhoods with the sales behind each count · owners share in 5 checked steps (nothing publishes without consent) · phone layout.</p>
+  <p class="muted">Left: neighborhoods, with the sales behind each count. Right: a shared record (appraisal vs. asking), the 5 checked sharing steps (nothing publishes without consent), and the phone layout.</p>
 </section>
 
 <section>

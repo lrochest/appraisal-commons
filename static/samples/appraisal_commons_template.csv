@@ -1,0 +1,24 @@
+Field,Your value,Example,Notes
+Street address,,5 Pope St,Number and street only
+Unit (if any),,,
+Town,,New Haven,One of the ten Greater New Haven towns
+ZIP code,,06512,
+Neighborhood (optional),,Morris Cove,
+Home type,,Single Family,"Single Family, Condo, Two Family..."
+Bedrooms,,3,
+Bathrooms,,2,Use .5 for a half bath
+Living area (sq ft),,1586,
+Lot size,,0.14 acres,
+Year built,,1953,
+List price,,449900,Asking price on the listing
+List date,,2025-07-24,YYYY-MM-DD
+Days on market,,17,
+Your offer,,470000,Only if different from the contract price
+Offer date,,2025-08-10,
+Contract price,,470000,The price you agreed to
+Contract date,,2025-08-14,
+Appraised value,,462000,The final value on the appraisal
+Appraisal date,,2025-09-08,Effective date on the appraisal
+Closing price,,459000,Sale price on the closing disclosure
+Closing date,,2025-09-30,
+Seller credits,,0,Credits from the seller at closing

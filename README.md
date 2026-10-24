@@ -110,8 +110,9 @@ Code-level guards around them: privacy redactor (before any model call and in th
 
 ```bash
 pip install -r requirements-dev.txt
-python -m pytest -q                 # 31 offline safety tests, no key needed
+python -m pytest -q                 # 32 offline safety tests, no key needed
 python scripts/attack_tests.py      # live red-team run, writes output/attack_results.json (< $0.01)
+python scripts/cost_ab.py           # live cost-cut A/B test, writes output/cost_ab.json (< $0.02)
 ```
 
 ## Repo layout
@@ -123,6 +124,7 @@ static/         web page (plain HTML/CSS/JS, no build step) + sample PDFs
 data/           bundled SQLite database
 scripts/        data build, sample PDFs, model check, red-team run
 tests/          offline safety tests
+docs/           report.html, slides.html, and their screenshots (docs/img)
 ```
 
 *Appraisal Commons is not an appraisal or a valuation and is not legal or lending advice.*

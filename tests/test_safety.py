@@ -301,3 +301,28 @@ def test_missing_key_gives_clear_message(monkeypatch):
     r = c.post("/api/offer-check", json={"address": "5 POPE ST", "town": "New Haven", "offer": 475000, "asking": 449000})
     assert r.status_code == 503 and "PORTKEY_API_KEY" in r.json()["error"]
     assert c.post("/api/how-often", json={"address": "5 POPE ST", "town": "New Haven", "offer": 475000}).status_code == 200
+
+
+def test_cut_off_answer_is_not_shown(monkeypatch):
+    """A response that hit the output cap ("Area records can") must not reach the visitor."""
+    calls = {"n": 0}
+
+    class Resp:
+        status = "incomplete"
+        incomplete_details = "max_output_tokens"
+        output = []
+        output_text = "Area records can"
+        usage = SimpleNamespace(input_tokens=10, output_tokens=1200, input_tokens_details=None, output_tokens_details=None)
+
+    class Client:
+        class responses:
+            @staticmethod
+            def create(**kw):
+                calls["n"] += 1
+                return Resp()
+
+    monkeypatch.setattr(llm, "client", lambda: Client())
+    m = Meter(run_id="t", kind="test")
+    r = agents.offer_check("5 POPE ST", 475000, "", m, town="New Haven", asking=449000)
+    assert "Area records can" not in r["answer"] and calls["n"] == 2  # retried once, then plain facts
+    assert any(t.get("step") == "cut_off" for t in r["trace"]) and any(t.get("agent") == "fallback" for t in r["trace"])

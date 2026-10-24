@@ -219,6 +219,9 @@ def chat(message: str, history: list[dict], page: dict | None, meter: Meter) -> 
         return {"answer": "That message was blocked by the AI provider's safety filter. I can help with Connecticut home-value records.",
                 "grounding": {"ok": True, "unsupported": []}, "trace": trace, "blocked": True}
     trace.extend(result.trace)
+    if not result.text.strip():  # empty or cut off: say so plainly rather than show half a sentence
+        return {"answer": "Sorry, I couldn't finish that answer. Please try asking again, a bit more specifically.",
+                "grounding": {"ok": True, "unsupported": []}, "trace": trace, "tools_used": []}
     typed = _numbers_typed(text) + [n for h in history[-4:] if h.get("role") == "user" for n in _numbers_typed(str(h.get("content", "")))]
     grounding = safety.check_grounding(result.text, result.tool_outputs, typed)
     trace.append({"agent": "grounding_guard", "step": "check", "ok": grounding["ok"], "unsupported": grounding["unsupported"]})

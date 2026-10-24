@@ -119,6 +119,11 @@ def run_agent(
         calls = [o for o in resp.output if getattr(o, "type", None) == "function_call"]
         if not calls:
             text = resp.output_text or ""
+            if getattr(resp, "status", None) == "incomplete":
+                # Hit the output cap mid-answer (e.g. "Area records can"). A half sentence is worse
+                # than nothing: return empty so the caller retries or falls back to plain facts.
+                trace.append({"agent": name, "step": "cut_off", "reason": str(getattr(resp, "incomplete_details", "") or "")[:80]})
+                text = ""
             data = None
             if schema:
                 try:

@@ -52,9 +52,10 @@
   <div class="row r37">
     <div>
       <ul>
-        <li>The lender lends only on the <b>appraised value</b>.</li>
-        <li>If it appraises below the price, the buyer is expected to <b>bring the difference in cash</b>.</li>
-        <li>The appraisal comes <b>after</b> the contract. Buyers decide how far over asking to go blind.</li>
+        <li>Low supply → buyers <b>offer over asking</b> to win.</li>
+        <li>Appraises that high → the higher price can be <b>financed</b> (with loan approval).</li>
+        <li>Appraises lower → the buyer brings the difference as <b>additional cash to close</b>.</li>
+        <li>The appraisal arrives <b>after</b> the contract, and only the buyer and lender see it.</li>
       </ul>
       <p class="muted">CT purchases priced above the appraisal: 4.0% in 2019 → 10.3% in 2021 → 9.9% in 2023 (FHFA UAD).</p>
     </div>
@@ -63,8 +64,8 @@
 </section>
 
 <section>
-  <div class="eyebrow">What is new</div>
-  <h2>Other sites show estimates. None show what homes appraised for.</h2>
+  <div class="eyebrow">What is new: more than asking and sale prices</div>
+  <h2>Buyers see asking and sale prices. None show what homes appraised for.</h2>
   <table class="t">
     <thead><tr><th>Product</th><th>Gives a buyer</th><th>Missing</th></tr></thead>
     <tbody>
@@ -79,17 +80,17 @@
 <section>
   <div class="eyebrow">The agents</div>
   <h2>Four narrow agents. Code does the guarding.</h2>
-  <svg class="diagram" viewBox="0 0 820 430" role="img" aria-label="Agent architecture diagram">
+  <svg class="diagram" viewBox="0 -10 820 488" role="img" aria-label="Agent architecture diagram">
   <defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#5d6b66"/></marker></defs>
   <style>.b{fill:#fff;stroke:#c9d6d0;stroke-width:1.5}.g{fill:#eef5f1;stroke:#2f8a6b;stroke-width:1.5}.w{fill:#fbefe5;stroke:#c8702a;stroke-width:1.5}.h{fill:#1f5f4a}.t{font:600 13px -apple-system,sans-serif;fill:#1d2a26}.s{font:11.5px -apple-system,sans-serif;fill:#5d6b66}.ht{font:700 13px -apple-system,sans-serif;fill:#fff}.l{stroke:#5d6b66;stroke-width:1.4;fill:none;marker-end:url(#ar)}</style>
   <rect class="b" x="10" y="20" width="150" height="56" rx="10"/><text class="t" x="24" y="44">Visitor</text><text class="s" x="24" y="62">offer, question, or file</text>
   <rect class="w" x="200" y="12" width="190" height="112" rx="10"/><text class="t" x="214" y="34">Code guards (in)</text>
   <text class="s" x="214" y="53">privacy redactor · injection scan</text><text class="s" x="214" y="70">input guard · rate limits</text><text class="s" x="214" y="87">budget: $0.25 session, $2 day</text><text class="s" x="214" y="104">kill switch (AI_PAUSED)</text>
   <path class="l" d="M160,48 H198"/>
-  <rect class="g" x="430" y="12" width="180" height="58" rx="10"/><text class="t" x="444" y="36">Records Concierge</text><text class="s" x="444" y="55">checks an offer (Offer Check)</text>
-  <rect class="g" x="430" y="80" width="180" height="58" rx="10"/><text class="t" x="444" y="104">Records Guide</text><text class="s" x="444" y="123">chat in the corner</text>
-  <rect class="g" x="430" y="148" width="180" height="58" rx="10"/><text class="t" x="444" y="172">Extractor</text><text class="s" x="444" y="191">document → fixed JSON form</text>
-  <rect class="g" x="430" y="216" width="180" height="58" rx="10"/><text class="t" x="444" y="240">Verifier</text><text class="s" x="444" y="259">6 check tools → verdict</text>
+  <rect class="g" x="430" y="12" width="180" height="58" rx="10"/><rect x="556" y="5" width="46" height="15" rx="7.5" fill="#1f5f4a" stroke="#fff" stroke-width="1.5"/><text x="579" y="16" text-anchor="middle" style="font:800 9.5px -apple-system,sans-serif;fill:#fff;letter-spacing:.06em">AGENT</text><text class="t" x="444" y="36">Records Concierge</text><text class="s" x="444" y="55">checks an offer (Offer Check)</text>
+  <rect class="g" x="430" y="80" width="180" height="58" rx="10"/><rect x="556" y="73" width="46" height="15" rx="7.5" fill="#1f5f4a" stroke="#fff" stroke-width="1.5"/><text x="579" y="84" text-anchor="middle" style="font:800 9.5px -apple-system,sans-serif;fill:#fff;letter-spacing:.06em">AGENT</text><text class="t" x="444" y="104">Records Guide</text><text class="s" x="444" y="123">chat in the corner</text>
+  <rect class="g" x="430" y="148" width="180" height="58" rx="10"/><rect x="556" y="141" width="46" height="15" rx="7.5" fill="#1f5f4a" stroke="#fff" stroke-width="1.5"/><text x="579" y="152" text-anchor="middle" style="font:800 9.5px -apple-system,sans-serif;fill:#fff;letter-spacing:.06em">AGENT</text><text class="t" x="444" y="172">Extractor</text><text class="s" x="444" y="191">document → fixed JSON form</text>
+  <rect class="g" x="430" y="216" width="180" height="58" rx="10"/><rect x="556" y="209" width="46" height="15" rx="7.5" fill="#1f5f4a" stroke="#fff" stroke-width="1.5"/><text x="579" y="220" text-anchor="middle" style="font:800 9.5px -apple-system,sans-serif;fill:#fff;letter-spacing:.06em">AGENT</text><text class="t" x="444" y="240">Verifier</text><text class="s" x="444" y="259">6 check tools → verdict</text>
   <path class="l" d="M390,40 H428"/><path class="l" d="M390,60 C412,75 410,100 428,108"/><path class="l" d="M390,80 C414,110 408,165 428,176"/>
   <path class="l" d="M520,206 V214"/>
   <rect class="b" x="650" y="12" width="160" height="206" rx="10"/><text class="t" x="664" y="36">Record tools</text>
@@ -105,6 +106,13 @@
   <path class="l" d="M520,274 V328"/>
   <text class="s" x="536" y="300">"needs a second look"</text>
   <rect class="b" x="650" y="340" width="160" height="56" rx="10"/><text class="t" x="664" y="363">Meter + audit trail</text><text class="s" x="664" y="381">tokens, cost, every step</text>
+
+  <line x1="10" x2="810" y1="418" y2="418" stroke="#dfe6e2"/>
+  <text class="t" x="10" y="448">Key</text>
+  <rect class="g" x="52" y="434" width="22" height="18" rx="5"/><text class="s" x="80" y="447">AI agent (gpt-6-luna)</text>
+  <rect class="w" x="222" y="434" width="22" height="18" rx="5"/><text class="s" x="250" y="447">Code guard (no AI)</text>
+  <rect class="h" x="378" y="434" width="22" height="18" rx="5"/><text class="s" x="406" y="447">A person</text>
+  <rect class="b" x="478" y="434" width="22" height="18" rx="5"/><text class="s" x="506" y="447">Visitor, tools, data, logs (no AI)</text>
 </svg>
   <p class="muted">Concierge (Offer Check) · Records Guide (chat) · Extractor (document → JSON schema) · Verifier (6 check tools). gpt-6-luna: course key, tool calling + strict JSON, cheap; low reasoning for the answering agents.</p>
 </section>
@@ -115,7 +123,7 @@
     <div>
       <h2>5 Pope St, New Haven: $475,000 on $449,000 asking</h2>
       <ul>
-        <li>Record tiles in <b>0.1 s</b> (no AI)</li>
+        <li>Records first: tiles in <b>0.1 s</b> straight from the data; AI writes the summary after (was 8–80 s for everything)</li>
         <li>Concierge → <code>compare_offer</code> → short cited answer</li>
         <li>Grounding guard: every $ and % traced</li>
         <li><b>2 calls · 5,063 in (3,786 cached) · 318 out · $0.00032</b></li>
@@ -130,10 +138,10 @@
   <div class="row">
     <img class="shot" src="{{img:06_home_record}}" alt="Shared record" style="max-height:300px" />
     <img class="shot" src="{{img:05_neighborhoods}}" alt="Neighborhoods" style="max-height:300px" />
-    <img class="shot" src="{{img:04_explore_search}}" alt="Explore search" style="max-height:280px" />
+    <img class="shot" src="{{img:18_share_steps_done}}" alt="Sharing steps" style="max-height:280px" />
     <img class="shot" src="{{img:16_phone_home_page}}" alt="Phone view" style="max-height:280px" />
   </div>
-  <p class="muted">Appraisal vs. asking on shared records · neighborhoods with the sales behind each count · address search by county · phone layout.</p>
+  <p class="muted">Appraisal vs. asking on shared records · neighborhoods with the sales behind each count · owners share in 5 checked steps (nothing publishes without consent) · phone layout.</p>
 </section>
 
 <section>

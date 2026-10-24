@@ -40,8 +40,10 @@
   .row.safety ul { margin-left: .2em; }
   .site-grid { display: grid; gap: 14px; }
   .site-grid img { width: 100%; height: auto; display: block; }
-  .site-row { display: grid; grid-template-columns: 1.35fr 1fr 118px; gap: 14px; align-items: start; }
-  .site-row img.nb { max-height: 330px; object-fit: cover; object-position: top; }
+  .site-row { display: grid; grid-template-columns: 1fr 190px; gap: 18px; align-items: start; }
+  .site-row img.nb { max-height: 400px; object-fit: cover; object-position: top; }
+  .site-row img.phone { max-height: 400px; object-fit: cover; object-position: top; }
+  .reveal img.pope { width: 100%; height: auto; margin-top: 14px; }
   .site-grid img.steps { width: auto; max-width: 100%; max-height: 225px; margin: 0 auto; }
   code { font-size: .85em; background: #eef2f0; padding: 1px 6px; border-radius: 5px; }
 </style>
@@ -128,7 +130,7 @@
 </section>
 
 <section>
-  <div class="eyebrow">Demo · one real run, traced</div>
+  <div class="eyebrow">Demo · real run, traced</div>
   <div class="row r37">
     <div>
       <h2 class="demo-h">5 Pope St, New Haven:<br/><span style="white-space:nowrap">offered $475,000 on $449,000 asking</span></h2>
@@ -138,6 +140,7 @@
         <li>Grounding guard: every $ and % traced</li>
         <li><b>2 calls · 5,063 in (3,786 cached) · 318 out · $0.00032</b></li>
       </ul>
+      <img class="pope" src="{{img:06_home_record}}" alt="Shared record for 5 Pope St" />
     </div>
     <img class="shot" src="{{img:08b_offer_full}}" alt="Offer Check traced run" />
   </div>
@@ -149,11 +152,10 @@
     <img class="steps" src="{{img:18_share_steps_done}}" alt="Sharing steps 1 to 4, then you decide" />
     <div class="site-row">
       <img class="nb" src="{{img:05_neighborhoods}}" alt="Neighborhoods with the sales behind each count" />
-      <img src="{{img:06_home_record}}" alt="Shared record for 5 Pope St" />
       <img class="phone" src="{{img:16_phone_home_page}}" alt="Phone view" />
     </div>
   </div>
-  <p class="muted">Top: sharing, step by step. Below: neighborhoods and their sales, a shared record (appraisal vs. asking), phone view.</p>
+  <p class="muted">Top: sharing, step by step. Below: neighborhoods with the sales behind each count, and the phone view.</p>
 </section>
 
 <section>

@@ -38,11 +38,11 @@
   .row.safety { grid-template-columns: auto 1fr; gap: 28px; }
   .row.safety img { max-width: 430px; }
   .row.safety ul { margin-left: .2em; }
-  .site-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 16px; align-items: start; }
+  .site-grid { display: grid; gap: 14px; }
   .site-grid img { width: 100%; height: auto; display: block; }
-  .site-grid img.nb { max-height: 540px; object-fit: contain; object-position: top; }
-  .site-right { display: grid; gap: 14px; }
-  .site-pair { display: grid; grid-template-columns: 1fr 105px; gap: 14px; align-items: start; }
+  .site-row { display: grid; grid-template-columns: 1.35fr 1fr 118px; gap: 14px; align-items: start; }
+  .site-row img.nb { max-height: 330px; object-fit: cover; object-position: top; }
+  .site-grid img.steps { width: auto; max-width: 100%; max-height: 225px; margin: 0 auto; }
   code { font-size: .85em; background: #eef2f0; padding: 1px 6px; border-radius: 5px; }
 </style>
 </head>
@@ -146,16 +146,14 @@
 <section>
   <div class="eyebrow">Demo · the site</div>
   <div class="site-grid">
-    <img class="nb" src="{{img:05_neighborhoods}}" alt="Neighborhoods with the sales behind each count" />
-    <div class="site-right">
+    <img class="steps" src="{{img:18_share_steps_done}}" alt="Sharing steps 1 to 4, then you decide" />
+    <div class="site-row">
+      <img class="nb" src="{{img:05_neighborhoods}}" alt="Neighborhoods with the sales behind each count" />
       <img src="{{img:06_home_record}}" alt="Shared record for 5 Pope St" />
-      <div class="site-pair">
-        <img src="{{img:18_share_steps_done}}" alt="Sharing steps" />
-        <img src="{{img:16_phone_home_page}}" alt="Phone view" />
-      </div>
+      <img class="phone" src="{{img:16_phone_home_page}}" alt="Phone view" />
     </div>
   </div>
-  <p class="muted">Left: neighborhoods, with the sales behind each count. Right: a shared record (appraisal vs. asking), the 5 checked sharing steps (nothing publishes without consent), and the phone layout.</p>
+  <p class="muted">Top: sharing, step by step. Below: neighborhoods and their sales, a shared record (appraisal vs. asking), phone view.</p>
 </section>
 
 <section>

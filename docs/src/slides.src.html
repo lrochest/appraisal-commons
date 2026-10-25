@@ -40,9 +40,10 @@
   .row.safety ul { margin-left: .2em; }
   .site-grid { display: grid; gap: 14px; }
   .site-grid img { width: 100%; height: auto; display: block; }
+  .site-top { display: grid; grid-template-columns: 1.3fr 1fr; gap: 16px; align-items: center; }
   .site-row { display: grid; grid-template-columns: 1fr 190px; gap: 18px; align-items: start; }
-  .site-row img.nb { max-height: 400px; object-fit: cover; object-position: top; }
-  .site-row img.phone { max-height: 400px; object-fit: cover; object-position: top; }
+  .site-row img.nb { max-height: 390px; object-fit: cover; object-position: top; }
+  .site-row img.phone { max-height: 390px; object-fit: cover; object-position: top; }
   .reveal img.pope { width: 100%; height: auto; margin-top: 14px; }
   .site-grid img.steps { width: auto; max-width: 100%; max-height: 225px; margin: 0 auto; }
   code { font-size: .85em; background: #eef2f0; padding: 1px 6px; border-radius: 5px; }
@@ -140,7 +141,6 @@
         <li>Grounding guard: every $ and % traced</li>
         <li><b>2 calls · 5,063 in (3,786 cached) · 318 out · $0.00032</b></li>
       </ul>
-      <img class="pope" src="{{img:06_home_record}}" alt="Shared record for 5 Pope St" />
     </div>
     <img class="shot" src="{{img:08b_offer_full}}" alt="Offer Check traced run" />
   </div>
@@ -149,13 +149,16 @@
 <section>
   <div class="eyebrow">Demo · the site</div>
   <div class="site-grid">
-    <img class="steps" src="{{img:18_share_steps_done}}" alt="Sharing steps 1 to 4, then you decide" />
+    <div class="site-top">
+      <img src="{{img:18_share_steps_done}}" alt="Sharing steps 1 to 4, then you decide" />
+      <img src="{{img:06_home_record}}" alt="Shared record for 5 Pope St" />
+    </div>
     <div class="site-row">
       <img class="nb" src="{{img:05_neighborhoods}}" alt="Neighborhoods with the sales behind each count" />
       <img class="phone" src="{{img:16_phone_home_page}}" alt="Phone view" />
     </div>
   </div>
-  <p class="muted">Top: sharing, step by step. Below: neighborhoods with the sales behind each count, and the phone view.</p>
+  <p class="muted">Top: sharing, step by step, and a shared record (appraisal vs. asking). Below: neighborhoods with the sales behind each count, and the phone view.</p>
 </section>
 
 <section>
